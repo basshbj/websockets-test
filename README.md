@@ -7,7 +7,30 @@ The client creates a socket connection with the backend and goes through the mid
 
 ```mermaid
 graph LR
-  Client --> Middleware
-  Middleware --> Backend
+  A[Client]
+  B[Middleware]
+  C[Server]
+
+  A --> B
+  B --> C
+
+```
+
+# Case 2: Web Sockets with FastAPI
+Use FastAPI as a backend and publish a Web Socket endpoint (wss)
+
+The idea (for future cases) is to use the FastAPI as a middleware to allow connections to thrid party services that use Web Socket as connection protocol and avoid connecting directly the frontend client with third party service.
+
+```mermaid
+graph LR
+  A[Frontend]
+  B[Backend]
+  C[Thirp Party API]
+
+  subgraph Application
+    A --> B
+  end
+  
+  B -.-> C
 
 ```
